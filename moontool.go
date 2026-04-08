@@ -25,7 +25,7 @@ import (
     "unicode"
 )
 
-func parseLeapSeconds(leapSecDoc string)([][]string){
+func ParseLeapSeconds(leapSecDoc string)([][]string){
 
   //separate table from data
   index := strings.Index(leapSecDoc, "#NTP")
@@ -69,24 +69,11 @@ func parseLeapSeconds(leapSecDoc string)([][]string){
   //2287785600     11       1 Jul 1972
   //fmt.Println(result)
 
-
-  // change jan and jul to integers
-  for i := range result {
-    for j := range result[i]{
-      switch strings.ToLower(result[i][j]){
-        case "jan":
-         result[i][j] = "1"
-
-        case "jul":
-          result[i][j] = "6"
-      }
-    }
-  }
   return result
 }
 
 // fetch official leapsecond data
-func fetchLeapSeconds()(string, error){
+func FetchLeapSeconds()(string, error){
     // The URL for the leap second list
     url := "https://data.iana.org/time-zones/data/leap-seconds.list"
 
@@ -118,17 +105,10 @@ func terriestrialTime(lst [][]string, y int, m int, d int)(string){
   + 32.184
   */
 
-  for i := range lst{
-    for j := range lst[i]{
-      if y <= int(lst[i][4]):
-
-    }
-  }
-
-
+  fmt.Println("Hello")
+  return "0"
 //What should the algorithm do? If y is smaller than or equal to? What is the best
 // way to accomplish what we want?
-
 }
 
 
@@ -141,12 +121,10 @@ func main(){
   }
 
   table := parseLeapSeconds(leapSecondsDoc)
-
   fmt.Println(table)
   //year := 2015
   //day := 31
   //month := 3
 
   //ttTime := terriestrialTime(table, year, month, day)
-
 }
